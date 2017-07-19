@@ -9,11 +9,11 @@ describe('Trie functionality', () => {
 
   describe('Insert', () => {
 
-  let completeMe = new Trie();
+    let completeMe = new Trie();
 
-  beforeEach(function () {
-    let completeMe;
-  })
+    beforeEach(function () {
+      completeMe;
+    })
 
     it('should have a root', () => {
       expect(completeMe.root).to.equal(null);
@@ -32,7 +32,7 @@ describe('Trie functionality', () => {
       expect(completeMe.root.children.a.children.p.letter).to.equal('p');
     })
 
-    it('should be able to insert a word and last letter has isWord property of true', () => {
+    it('last letter of inserted word has isWord property of true', () => {
       completeMe.insert('app');
       completeMe.insert('apple');
 
@@ -62,7 +62,7 @@ describe('Trie functionality', () => {
         .isWord).to.equal(true);
     })
 
-    it('should be able to insert multiple words and children objects have multiple properties', () => {
+    it('should insert multiple words and children objects have multiple props', () => {
       completeMe.insert('apple');
       completeMe.insert('ape');
 
@@ -172,40 +172,78 @@ describe('Trie functionality', () => {
 
   describe('Select', () => {
 
-      let completeMe;
+    function sleep(milliseconds) {
+      var start = new Date().getTime();
+
+      for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+          break;
+        }
+      }
+    }
+
+    let completeMe;
 
     beforeEach(function () {
       completeMe = new Trie();
     })
 
-    it.skip('should be able to select order of words returned by suggest', () => {
-      completeMe.insert('apple');
-      completeMe.insert('applesauce');
-      completeMe.insert('apply');
-      completeMe.insert('app');
+    it('should be able to select order of words returned by suggest', () => {
+      completeMe.insert('app')
+      completeMe.insert('apple')
+      completeMe.insert('applesauce')
+      completeMe.insert('apply')
 
       let suggestions = completeMe.suggest('app');
 
       expect(suggestions).to.deep.equal([ 'app', 'apple', 'applesauce', 'apply' ])
-      completeMe.select('apply')
+
+      sleep(10);
+
+      completeMe.select('app');
+      suggestions = completeMe.suggest('app');
       expect(suggestions).to.deep.equal([ 'app', 'apple', 'applesauce', 'apply' ])
-      completeMe.select('apple')
+
+      sleep(10);
+
+      completeMe.select('apply');
+      suggestions = completeMe.suggest('app');
+      expect(suggestions).to.deep.equal([ 'apply', 'app', 'apple', 'applesauce' ])
+
+      sleep(10);
+
+      completeMe.select('apple');
+      suggestions = completeMe.suggest('app');
       expect(suggestions).to.deep.equal([ 'apple', 'apply', 'app', 'applesauce' ])
+
+      sleep(10);
+
+      completeMe.select('app');
+      suggestions = completeMe.suggest('app');
+      expect(suggestions).to.deep.equal([ 'app', 'apple', 'apply', 'applesauce' ])
+
+      sleep(10);
+
+      completeMe.select('apply');
+      completeMe.select('app');
+      completeMe.select('apple');
+      suggestions = completeMe.suggest('app');
+      expect(suggestions).to.deep.equal([ 'app', 'apple', 'apply', 'applesauce' ])
     })
   })
 
   describe('populate dictionary', () => {
-      let completeMe
+    let completeMe;
 
-      beforeEach(function (done) {
-        this.timeout(5000)
-        completeMe = new Trie()
-        completeMe.populate(dictionary)
-        done()
-      })
-
-      it('should have lots of words after dictionary is populated', () => {
-        expect(completeMe.wordCount).to.equal(234371)
-      })
+    beforeEach(function (done) {
+      this.timeout(5000)
+      completeMe = new Trie()
+      completeMe.populate(dictionary)
+      done()
     })
+
+    it('should have lots of words after dictionary is populated', () => {
+      expect(completeMe.wordCount).to.equal(234371)
+    })
+  })
 })

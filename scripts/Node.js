@@ -4,5 +4,6 @@ export default class Node {
     this.letter = letter;
     this.children = {};
     this.frequency = 0;
+    this.lastTouched = 0;
   }
 }

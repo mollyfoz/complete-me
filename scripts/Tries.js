@@ -17,7 +17,7 @@ export default class Trie {
     let currentNode = this.root;
 
     letters.forEach(letter => {
-      if(!currentNode.children[letter]) {
+      if (!currentNode.children[letter]) {
         currentNode.children[letter] = new Node(letter);
       }
       currentNode = currentNode.children[letter];
@@ -52,23 +52,36 @@ export default class Trie {
         let newString = string + child.letter;
 
         if (child.isWord) {
-          suggestions.push(newString);
+          suggestions.push({name: newString, frequency: child.frequency, lastTouched: child.lastTouched});
         }
         addLetters(newString, child);
       }
     };
 
     if (currentNode && currentNode.isWord) {
-      suggestions.push(string)
+      suggestions.push({name: string, frequency: currentNode.frequency, lastTouched: currentNode.lastTouched})
     }
     if (currentNode) {
       addLetters(string, currentNode);
     }
-    return suggestions;
+
+    suggestions.sort((a, b) => {
+      return b.frequency - a.frequency || b.lastTouched - a.lastTouched;
+    })
+    return suggestions.map((obj) => {
+      return obj.name;
+    })
   }
 
-  select() {
+  select(string) {
+    let word = [...string.toLowerCase()];
+    let currentNode = this.root;
 
+    for (let i = 0; i < word.length; i++) {
+      currentNode = currentNode.children[word[i]];
+    }
+    currentNode.frequency++;
+    currentNode.lastTouched = Date.now();
   }
 
   populate(dictionary) {
