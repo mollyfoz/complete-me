@@ -4,7 +4,6 @@
 
 body {
   margin: 0 auto;
-
 }
 
 .container {
@@ -33,7 +32,7 @@ h1 {
 }
 
 #user-input {
-  width: 85%;
+  width: 70%;
 }
 
 .suggested-words {
