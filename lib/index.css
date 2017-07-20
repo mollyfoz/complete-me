@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+
+}
+
+.container {
+  background: url(../lib/assets/24yVINP.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+
+h1 {
+  color: #FB368B;
+  font-family: 'Monoton', cursive;
+  font-size: 80px;
+  margin: 0 auto;
+}
+
+.input-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 40px;
+}
+
+#user-input {
+  width: 85%;
+}
+
+.suggested-words {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 90%;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}

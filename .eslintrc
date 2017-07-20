@@ -3,7 +3,8 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "mocha": true
+    "mocha": true,
+    "jquery": true
   },
   "extends": "eslint:recommended",
   "parserOptions": {
@@ -46,7 +47,7 @@
     ],
     "max-len": [
       "error",
-      100
+      120
     ],
     "new-cap": [
       "error", {

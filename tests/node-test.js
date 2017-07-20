@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Node from '../scripts/Node';
+import Node from '../lib/Node';
 
 describe ('Node functionality', () => {
   let node;

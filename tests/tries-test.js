@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import Trie from '../scripts/Tries'
-import Node from '../scripts/Node'
+import Trie from '../lib/Tries'
+import Node from '../lib/Node'
 const text = "/usr/share/dict/words"
 const fs = require('fs');
 let dictionary = fs.readFileSync(text).toString().trim().split('\n')

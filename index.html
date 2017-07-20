@@ -2,18 +2,20 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./lib/index.css"/>
     <title>Complete-Me</title>
   </head>
   <body>
-    <form>
-      <fieldset>
-        <legend>Complete Me</legend>
-        <input type="text" id="user-input" name="user-input" placeholder="Enter Text Here">
-        <div class="btn-section">
-          <input type="submit" id="suggest-btn" name="suggest-input" value="Suggest">
-        </div>
-      </fieldset>
-    </form>
+    <section class='container'>
+      <h1>Complete Me</h1>
+      <article class="input-section">
+          <input type="text" id="user-input" class="user-input" name="user-input" placeholder="Enter Text Here">
+      </article>
+      <article class="suggested-words">
+      </article>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript" src="./dist/bundle.js"></script>
   </body>
 </html>
