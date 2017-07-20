@@ -32,6 +32,8 @@ h1 {
 }
 
 #user-input {
+  font-size: 24px;
+  padding-left: 5px;
   width: 70%;
 }
 
@@ -42,4 +44,9 @@ h1 {
   width: 90%;
   flex-wrap: wrap;
   margin-top: 20px;
+}
+
+button {
+  font-size: 24px;
+  margin: 5px;
 }

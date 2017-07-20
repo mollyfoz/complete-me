@@ -78,7 +78,7 @@ class Trie {
   }
 
   insert(string) {
-    const node = new __WEBPACK_IMPORTED_MODULE_0__Node__["a" /* default */]()
+    const node = new __WEBPACK_IMPORTED_MODULE_0__Node__["a" /* default */]();
 
     if (!this.root) {
       this.root = node;
@@ -110,7 +110,9 @@ class Trie {
     let suggestions = [];
 
     word.forEach(letter => {
-      currentNode = currentNode.children[letter];
+      if (currentNode) {
+        currentNode = currentNode.children[letter];
+      }
     })
 
     const addLetters = (string, currentNode) => {
